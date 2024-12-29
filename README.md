@@ -1,1 +1,1 @@
-npx create-next-app@14.2.21 ./
+Created with love by codecrafthhub.site

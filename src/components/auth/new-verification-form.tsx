@@ -20,6 +20,7 @@ export const NewVerificationForm = () => {
     }
     newVerification(token)
       .then((data) => {
+        console.log(data)
         setSuccess(data.success);
         setError(data.error);
       })
@@ -39,8 +40,8 @@ export const NewVerificationForm = () => {
     >
       <div className="flex items-center justify-center w-full">
         {!success && !error && <BeatLoader />}
-        <FormError message={error} />
-        {!success && <FormSuccess message={success} />}
+        {error && <FormError message={error} />}
+        {success && <FormSuccess message={success} />}
       </div>
     </CardWrapper>
   );

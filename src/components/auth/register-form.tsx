@@ -34,7 +34,7 @@ export const RegisterForm = () => {
       register(values).then(({ error, success }) => {
         setError(error);
         setSuccess(success);
-        router.replace("/auth/login");
+        // router.replace("/auth/login");
       });
     });
   };
