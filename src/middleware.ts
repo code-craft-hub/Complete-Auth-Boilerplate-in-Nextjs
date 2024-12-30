@@ -26,13 +26,23 @@ export default auth((req) => {
 
   if (isAuthRoute) {
     if (isLoggedIn) {
-      return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, req.nextUrl));
+      return NextResponse.redirect(
+        new URL(DEFAULT_LOGIN_REDIRECT, req.nextUrl)
+      );
     }
     return NextResponse.next();
   }
 
   if (!isLoggedIn && !isPublicRoute) {
-    return NextResponse.redirect(new URL("/auth/login", req.nextUrl));
+    let callbackUrl = pathname;
+    if (req.nextUrl.search) {
+      callbackUrl += req.nextUrl.search;
+    }
+
+    const encodedCallbackUrl = encodeURIComponent(callbackUrl)
+
+
+    return NextResponse.redirect(new URL(`/auth/login?callbackUrl=${encodedCallbackUrl}`, req.nextUrl));
   }
 
   return NextResponse.next();
