@@ -2,7 +2,6 @@
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -10,6 +9,8 @@ import {
 import { Header } from "./header";
 import { Social } from "./social";
 import { BackButton } from "./back-button";
+import { Suspense } from "react";
+import { Loader } from "lucide-react";
 
 interface CardWrapperProps {
   children: React.ReactNode;
@@ -37,7 +38,16 @@ export const CardWrapper = ({
         <CardContent>{children}</CardContent>
         {showSocial && (
           <CardFooter>
-            <Social />
+            <Suspense
+              fallback={
+                <div className="h-screen w-full flex gap-4 items-center justify-center">
+                  <Loader className="size-6 animate-spin" />
+                  Loading...
+                </div>
+              }
+            >
+              <Social />
+            </Suspense>
           </CardFooter>
         )}
         <CardFooter>

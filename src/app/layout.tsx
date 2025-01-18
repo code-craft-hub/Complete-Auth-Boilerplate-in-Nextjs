@@ -1,4 +1,3 @@
-import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import "./globals.css";
 import SessionProviderComponent from "@/providers/session-provider";
@@ -17,17 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          > */}
         <SessionProviderComponent>
           <Toaster />
           {children}
-          </SessionProviderComponent>
-        {/* </ThemeProvider> */}
+        </SessionProviderComponent>
       </body>
     </html>
   );

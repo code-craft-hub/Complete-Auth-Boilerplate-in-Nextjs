@@ -1,6 +1,4 @@
 import { Poppins } from "next/font/google";
-import { ModeToggle } from "@/components/ModeToggle";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LoginButton } from "@/components/auth/login-button";

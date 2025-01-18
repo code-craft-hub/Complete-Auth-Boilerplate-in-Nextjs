@@ -19,13 +19,11 @@ import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
 import { register } from "@/actions/register";
 import { Loader } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
-  const router = useRouter();
 
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     setError("");
@@ -34,7 +32,6 @@ export const RegisterForm = () => {
       register(values).then(({ error, success }) => {
         setError(error);
         setSuccess(success);
-        // router.replace("/auth/login");
       });
     });
   };

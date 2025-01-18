@@ -18,7 +18,7 @@ export const getVerificationTokenByEmail = async (email: string) => {
     });
 
     return verificationToken;
-  } catch (error) {
+  } catch {
     return null;
   }
 };

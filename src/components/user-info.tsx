@@ -1,12 +1,8 @@
 import { ExtendedUser } from "../../next-auth";
-import { CardWrapper } from "./auth/card-wrapper";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "./ui/badge";
 
