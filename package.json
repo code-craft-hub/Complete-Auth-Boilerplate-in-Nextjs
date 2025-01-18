@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.7.4",
@@ -69,7 +70,6 @@
     "uuid": "^11.0.3",
     "vaul": "^1.1.2",
     "zod": "^3.24.1",
-    "postinstall": "prisma generate"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
