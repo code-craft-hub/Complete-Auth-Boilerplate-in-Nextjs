@@ -35,7 +35,7 @@ export const UserButton = () => {
         <DropdownMenuItem
           className="text-red-500"
           onClick={async () => {
-            await deleteUser(user?.id!);
+            if (user?.id) await deleteUser(user.id);
             await logout();
           }}
         >
