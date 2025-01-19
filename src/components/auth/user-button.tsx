@@ -8,10 +8,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { FaUser } from "react-icons/fa";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { LogoutButton } from "./logout-button";
-import { LogOut } from "lucide-react";
+import { LogOut, Trash } from "lucide-react";
+import { deleteUser } from "@/actions/deleteUser";
+import { logout } from "@/actions/logout";
 
 export const UserButton = () => {
-   const user = useCurrentUser();
+  const user = useCurrentUser();
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -24,12 +27,21 @@ export const UserButton = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40" align="end">
         <LogoutButton>
-        <DropdownMenuItem>
-    <LogOut className="size-4 mr-2" />
-    Logout
-</DropdownMenuItem>
-
+          <DropdownMenuItem>
+            <LogOut className="size-4 mr-2" />
+            Logout
+          </DropdownMenuItem>
         </LogoutButton>
+        <DropdownMenuItem
+          className="text-red-500"
+          onClick={async () => {
+            await deleteUser(user);
+            await logout();
+          }}
+        >
+          <Trash className="size-4 mr-2" />
+          Delete Account
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

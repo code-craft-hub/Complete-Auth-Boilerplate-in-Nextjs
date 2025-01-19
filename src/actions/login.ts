@@ -24,11 +24,14 @@ export const login = async (
   if (!success) return { error: "Invalid fields!" };
 
   const { email, password, code } = data;
-
   const existingUser = await getUserByEmail(email);
 
-  if (!existingUser || !existingUser.email || !existingUser.password)
+  if (!existingUser || !existingUser.email)
     return { error: "Email does not exist!" };
+  if (!existingUser || existingUser.password === null || existingUser.password === undefined)
+    return { error: "Login with Google or Github for this Email.", };
+  if (!existingUser || !existingUser.password)
+    return { error: "Password do not match" };
 
   if (!existingUser.emailVerified) {
     const verificationToken = await generateVerificationToken(

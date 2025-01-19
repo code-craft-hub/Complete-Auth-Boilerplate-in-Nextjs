@@ -5,7 +5,8 @@ export const getUserByEmail = async (email: string) => {
     const user = await db.user.findUnique({ where: { email } });
 
     return user;
-  } catch  {
+  } catch (error){
+    console.log({error})
     return null;
   }
 };
