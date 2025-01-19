@@ -32,14 +32,15 @@ export default auth((req) => {
   }
 
   if (!isLoggedIn && !isPublicRoute) {
-    let callbackUrl = nextUrl.pathname || DEFAULT_LOGIN_REDIRECT; // Fallback to default
-
+    let callbackUrl = nextUrl.pathname || DEFAULT_LOGIN_REDIRECT || "/";
+    console.log(nextUrl.pathname, DEFAULT_LOGIN_REDIRECT,callbackUrl);
     // let callbackUrl = nextUrl.pathname;
     if (req.nextUrl.search) {
       callbackUrl += req.nextUrl.search;
     }
 
     const encodedCallbackUrl = encodeURIComponent(callbackUrl);
+    console.log({encodedCallbackUrl})
 
     return NextResponse.redirect(
       new URL(`/auth/login?callbackUrl=${encodedCallbackUrl}`, req.nextUrl)
