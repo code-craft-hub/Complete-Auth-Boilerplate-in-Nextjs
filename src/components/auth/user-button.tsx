@@ -14,7 +14,7 @@ import { logout } from "@/actions/logout";
 
 export const UserButton = () => {
   const user = useCurrentUser();
-  
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -35,7 +35,7 @@ export const UserButton = () => {
         <DropdownMenuItem
           className="text-red-500"
           onClick={async () => {
-            await deleteUser(user);
+            await deleteUser(user?.id!);
             await logout();
           }}
         >
